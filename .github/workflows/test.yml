@@ -6,3 +6,7 @@ jobs:
     steps:
       - name: Hello
         run: echo "Hello World"
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Run the tests
+        run: python3 test.py
