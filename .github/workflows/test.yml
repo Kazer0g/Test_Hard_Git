@@ -6,7 +6,16 @@ jobs:
     steps:
       - name: Hello
         run: echo "Hello World"
+      - name: Install the dependencies
+        run: pip3 install pyinstaller
       - name: Check out repository code
         uses: actions/checkout@v2
       - name: Run the tests
         run: python3 test.py
+      - name: Build the executable
+        run: pyinstaller --windowed --onefile gui.py
+      - name: Upload gui-linux
+        uses: actions/upload-artifact@v2
+        with:
+          name: gui-linux
+          path: dist/gui
